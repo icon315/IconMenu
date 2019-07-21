@@ -12,7 +12,7 @@ int scriptsoffset = 161;
 buffer override(buffer page)
 {	
  	# Handle relay and CLI requests
- 	if (form_field("relay") == my_hash())
+ 	if (form_field("pwd") == my_hash())
  	{
 		if (form_field("relay") != "")
 		{
