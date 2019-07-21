@@ -69,3 +69,15 @@ Two layouts have been provided as examples, namely "aftercore" and "hc_community
 If you have any ideas for future features, or just want to show off your creations, I'd love to hear from you! Shoot me a message at Elliot#4310 on Discord!
 
 I'm not quite as rich as Ezandora, so if you want to throw any meat or goodies my way to support development, I'd be absurdly grateful. In game, I'm at Hawkshaw (#3289932). 
+
+# Changelog
+
+__0.1.1__
+
+Added a security check to the /mafia and /relay commands. Now no one can trick you into clicking on a malicious link and hijack your CLI!
+
+Also, IconMenu will kmail me your creations once you deem them worth saving. If you're feeling shy, you're welcome to comment those lines out!
+
+__0.1__
+
+Alpha release. There's good things to come!
