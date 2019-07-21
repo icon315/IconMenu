@@ -1,0 +1,39 @@
+0	0	seasidetown	go	place.php?whichplace=town_wrong	
+0	1	thesea	go	place.php?whichplace=oldman	
+0	2	feather	go	council.php	
+1	0	manoricon	go	place.php?whichplace=town_right	
+1	1	thedesert	go	place.php?whichplace=desertbeach	
+1	2	daisy	go	clan_hall.php	
+2	0	elevent	go	campground.php	
+2	1	bansai	go	place.php?whichplace=woods	
+2	2	theplains	go	place.php?whichplace=plains	
+3	0	themountains	go	place.php?whichplace=mountains	
+3	1	junkboat	go	island.php	
+3	2	fig2_1	go	place.php?whichplace=nstower	
+5	0	wardrobe	go	inventory.php?which=2	
+5	1	book3	go	skillz.php	
+5	2	wbstill	go	craft.php	
+6	0	cocktailkit	go	inventory.php?which=1	
+6	1	odetobooze	macro	/cast ode to booze	Ode to Booze
+6	2	mayocase	go	campground.php?action=workshed	
+7	0	backpack	go	inventory.php?which=3	
+7	1	pep_patty	macro	/cast sweet synthesis	Sweet Synthesis
+7	2	terrarium	macro	/goto familiar.php	Familiars
+9	0	bbattrig	macro	/use Bastille Battalion	Bastille Battalion
+9	2	tote_open	macro	/use garbage tote	Garbage Tote
+10	0	gbottle_open	macro	/wishes	Genie Bottle
+10	2	songboombox	macro	/use songboom	BoomBox
+11	0	may4swordkit	macro	/goto main.php?action=may4	Upgrade Saber
+11	2	woodbeachcomb	macro	/use comb	Comb
+12	0	fr_tatkit	go	place.php?whichplace=realm_fantasy	
+12	2	lucre	macro	/go bounty	Bounty Hunter Hunter
+13	0	pr_piratehat	go	place.php?whichplace=realm_pirate	
+13	2	tulip	go	place.php?whichplace=forestvillage&amp;amp;action=fv_friar	
+15	0	envelope	go	messages.php	
+15	2	themall	go	mall.php	
+16	0	blackwrench	go	account.php	
+16	2	loottoken	go	managestore.php	
+18	0	meteorbook	macro	/relay Relay_guide.ash	Guide
+18	2	wbbreakfast2	macro	/mafia breakfast	Breakfast
+19	0	c17pants	macro	/mafia maximize advs	Pyjamas
+19	2	toggleswitch1	macro	/mafia iconmenu (load, hc_community_service);	HCCS

@@ -1,0 +1,44 @@
+0	0	seasidetown	go	place.php?whichplace=town_wrong	
+0	1	thesea	go	place.php?whichplace=oldman	
+0	2	feather	go	council.php	
+1	0	manoricon	go	place.php?whichplace=town_right	
+1	1	thedesert	go	place.php?whichplace=desertbeach	
+1	2	bone	go	place.php?whichplace=town_market	
+2	0	elevent	go	campground.php	
+2	1	bansai	go	place.php?whichplace=woods	
+2	2	theplains	go	place.php?whichplace=plains	
+3	0	themountains	go	place.php?whichplace=mountains	
+3	1	junkboat	go	island.php	
+3	2	fig2_1	go	place.php?whichplace=nstower	
+5	0	wardrobe	go	inventory.php?which=2	
+5	1	book3	go	skillz.php	
+5	2	wbstill	go	craft.php	
+6	0	cocktailkit	go	inventory.php?which=1	
+6	1	odetobooze	macro	/cast ode to booze	Ode to Booze
+6	2	mayocase	go	campground.php?action=workshed	
+7	0	backpack	go	inventory.php?which=3	
+7	1	pep_patty	macro	/cast sweet synthesis	Sweet Synthesis
+7	2	terrarium	macro	/goto familiar.php	Familiars
+9	0	bbattrig	macro	/use Bastille Battalion	Bastille Battalion
+9	1	martini	macro	/goto clan_viplounge.php?whichfloor=2	Speakeasy
+9	2	tote_open	macro	/use garbage tote	Garbage Tote
+10	0	gbottle_open	macro	/wishes	Genie Bottle
+10	1	jarl_regdog	macro	/goto clan_viplounge.php?whichfloor=2	Hot Dog Stand
+10	2	songboombox	macro	/use songboom	BoomBox
+11	0	may4swordkit	macro	/goto main.php?action=may4	Upgrade Saber
+11	1	crystalball	macro	/goto clan_viplounge.php?preaction=lovetester	Fortune Teller
+11	2	woodbeachcomb	macro	/use comb	Comb
+12	0	runespoon	macro	/goto inv_use.php?whichitem=10254	Tune Moon
+12	1	8ball	macro	/goto clan_viplounge.php?whichfloor=2	Pool Table
+12	2	fr_tatkit	go	place.php?whichplace=realm_fantasy	
+13	0	folder	macro	/goto clan_viplounge.php?whichfloor=2	Fax Machine
+13	1	poolduck	macro	/goto clan_viplounge.php?whichfloor=2	Swimming Pool
+13	2	fishinpole	macro	/goto clan_viplounge.php?action=loundry	Floundry
+15	0	envelope	go	messages.php	
+15	2	themall	go	mall.php	
+16	0	blackwrench	go	account.php	
+16	2	loottoken	go	managestore.php	
+18	0	meteorbook	macro	/relay Relay_guide.ash	Guide
+18	2	wbbreakfast2	macro	/mafia breakfast	Breakfast
+19	0	c17pants	macro	/mafia maximize advs	Pyjamas
+19	2	toggleswitch2	macro	/mafia iconmenu (load, aftercore);	Aftercore
