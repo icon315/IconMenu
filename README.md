@@ -14,7 +14,7 @@ To update the tool, just type...
 
 # Aesthetic Tweaks
 
-Within /relay/awesomemenu.php, you'll find options to hide or show various elements of the menu bar. By default, a number of these are hidden, but they can easily be replaced. For example, to replace the bug report button, simply replace the line "boolean hide_bug_report = true;" with "boolean hide_bug_report = false;".
+Within /relay/awesomemenu.php, you'll find options to hide or show various elements of the menu bar. By default, a few of these are hidden, but they can easily be replaced. For example, to hide the log out button, simply replace the line "boolean hide_logout = false;" with "boolean hide_logout = true;".
 
 IconMenu also adds a text box to the layout editor, which allows you to select custom images for icons on the menu bar. While I hope to add more functionality to this feature soon, for now, if you simply enter the name of an item, skill, or familiar's image file, that image file will be used once you submit your changes. 
 
