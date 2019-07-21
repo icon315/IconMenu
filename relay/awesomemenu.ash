@@ -1,111 +1,94 @@
-script "IconMenu.ash";
+# Preferences
 
-# Thanks to Icon314 for creating the base of this code, as well as letting me gut it!
+boolean hide_edit_button = false;
+boolean hide_moons = true;
+boolean hide_help = true;
+boolean hide_bug_report = false;
+boolean hide_logout = false;
+boolean hide_relay_scripts = false;
 
-# TODO:
-# Add search field for items and skills (use $item[ text ].image)
-# Add save and load buttons to the relay
+int scriptsoffset = 161;
 
-string [int, int, string, string, string] awesomeicons;
-
-boolean shoulddelete(int i, int j)
-{
-	foreach x, y in awesomeicons
-	{
-		if (i == x && j == y)
+buffer override(buffer page)
+{	
+ 	# Handle relay and CLI requests
+ 	if (form_field("relay") == my_hash())
+ 	{
+		if (form_field("relay") != "")
 		{
-			return false;
-		}			
-	}
-	return true;
-}
-
-void deleteicon(int x, int y)
-{
-	visit_url("/awesomemenu.php?pwd="+my_hash()+"&delete="+x+","+y,false);
-}
-
-void main(string action, string savename)
-{
-	if(action == "")
-	{
-		print("Usage:");
-		print("\"iconmenu (action, savename);\"");
-		print("action - save, load, clear");
-		print("savename - the name of the setup to save/load, defaulted to 'backup'");
-		abort();
+			page.replace_string("</head>","<script>top.mainpane.location='"+form_field("relay")+"';</script></head>");
+		}
+		if (form_field("mafia") != "")
+		{
+			if (cli_execute(form_field("mafia"))) page = visit_url();
+		}
 	}
 	
-	if (savename == "") savename = "backup";
+# Cosmetic Filters
+	matcher fixed = create_matcher('<\\w*? class="noedit".*?>.*?<\\/div>', page);
 	
-	if(action == "save")
-	{	
-		string message;
-		string topmenu = visit_url("/topmenu.php");
-		matcher icons = create_matcher('<div class="ai" +data-xy="(\\d+),(\\d+)" +data-def="\\[&quot;(.+?)&quot;,&quot;(go|macro|popup)&quot;,&quot;(.+?)&quot;(,&quot;([a-zA-Z ]+)&quot;)?',topmenu);
-		while(icons.find())
-		{
-			int x = to_int(icons.group(1));
-			int y = to_int(icons.group(2));
-			string img = icons.group(3);
-			string type= icons.group(4);
-			string content = icons.group(5);
-			content = content.replace_string("\\/","/");
-			string Name = icons.group(7);
-			awesomeicons[x, y, img, type, content] = name;
-			message += img + " | " + content + "\n";
-		}
-		message.replace_string(" ", "+");
-		visit_url("sendmessage.php?action=send&pwd="+my_hash()+"&towho=hawkshaw&contact=0&message="+message+"&howmany1=1&whichitem1=0&sendmeat=");
-		map_to_file(awesomeicons, "/IconMenu/"+savename+".txt");
-		print("Saved to "+savename+".txt");
-	}
-	else if(action == "clear")
+	if (hide_edit_button)
 	{
-		print("Deleting all icons");
-		string topmenu = visit_url("/topmenu.php");
-		matcher icons = create_matcher('<div class="ai" +data-xy="(\\d+),(\\d+)" +data-def="\\[&quot;(.+?)&quot;,&quot;(go|macro|popup)&quot;,&quot;(.+?)&quot;(,&quot;([a-zA-Z ]+)&quot;)?',topmenu);
-		while(icons.find())
-		{
-			int x = to_int(icons.group(1));
-			int y = to_int(icons.group(2));
-			deleteicon(x,y);
-		}
+		page.replace_string('<a class="config"', '<a class="config" style="display: none;"');
+		scriptsoffset-=15;
 	}
-	else if(action == "load")
+	if (hide_moons)
 	{
-		print("Loading icons from " + filename + "...");
-		string topmenu = visit_url("/awesomemenu.php");
-		file_to_map("/IconMenu/"+savename+".txt", awesomeicons);
+		page.replace_string('<div class="noedit"', '<div class="noedit" style="display: none;"');
+		scriptsoffset-=86;
+	}
+	if (hide_help)
+	{
+		page.replace_string('<a class="noedit" onclick', '<a class="noedit" style="display: none;" onclick');
+		scriptsoffset-=15;
+	}
+	if (hide_bug_report)
+	{
+		page.replace_string('<a class="noedit" href="adminmail.php"', '<a class="noedit" href="adminmail.php" style="display: none;"');
+		scriptsoffset-=15;
+	}
+	if (hide_logout)
+	{
+		page.replace_string('<a class="noedit" href="/KoLmafia/', '<a class="noedit" style="display: none;" href="/KoLmafia/');
+		scriptsoffset-=15;
+	}
 
-		print("Updating icons...");
-		foreach x, y, img, type, content, name in awesomeicons
-		{
-			string check = replace_string('data-xy="'+x+','+y+'"  data-def="[&quot;'+img+'&quot;,&quot;'+type+'&quot;,&quot;'+content+'&quot;', "/", "\\/");
-			
-			if (contains_text(topmenu, check))
-			{
-				continue;
-			}
-			string xy = to_string(x) + "," + to_string(y);
-			if(type == "go")
-				visit_url("awesomemenu.php?existing="+xy+"&actiontype="+type+"&icon="+img+"&go="+content+"&macro=&name="+name);
-			else if(type == "macro")
-				visit_url("awesomemenu.php?existing="+xy+"&actiontype="+type+"&icon="+img+"&go=account.php&macro="+content+"&name="+name);
-		}
-		
-		print("Removing old icons...");
-		
-		topmenu = visit_url("awesomemenu.php");
-		string [int, int] icons = group_string(topmenu, 'div class="ai"  data-xy="(\\d{1,2}),(\\d{1,2})');
-		
-		foreach i in icons
-		{
-			if (shoulddelete(to_int(icons[i][1]), to_int(icons[i][2])))
-			{
-				visit_url("/awesomemenu.php?pwd="+my_hash()+"&delete="+icons[i][1]+","+icons[i][2],false);
-			}
-		}
-		print("Done!");
+	matcher refresher = create_matcher('\\[<a href="(.*?)">re</a>\\]', page);
+	while (refresher.find())
+	{
+		page.replace_string(group(refresher, 0), "");
 	}
+	
+	if (hide_relay_scripts)
+	{
+		page.replace_string("<div style='position: absolute; z-index: 5; top: 40px; right: 0px;", "<div style='display: none;'");
+	}
+	else
+	{
+		page.replace_string("<div style='position: absolute; z-index: 5; top: 40px; right: 0px;", "<div style='position: absolute; z-index: 5; top: 10px; right: "+scriptsoffset+"px;");
+	}
+	page.replace_string('<i>(click to edit)</i>', "");
+	page.replace_string('<div class="justedit">&laquo; Edit Mode, Click to Exit</div>', "");
+
+# Icon selector
+	page.replace_string('<input type="hidden" name="icon"', '<input type="visible" name="icon"');
+ 	page.replace_string("('#config .icon')", "('#config .icon img')");	
+
+	# Set up CLI and Relay macros
+	matcher relay = create_matcher('rel="\/relay (.*?)(?=" href="#")', page);
+	while (relay.find())
+	{
+		page.replace_string('rel="/relay ' + group(relay,1) + '" href="#" class="macrocon"', 'rel="/" href="?relay=' + group(relay,1)+'&pwd='+my_hash()+'"');
+	}
+	matcher mafia = create_matcher('rel="\/mafia (.*?)(?=" href="#")', page);
+	while (mafia.find())
+	{
+		page.replace_string('rel="/mafia ' + group(mafia,1) + '" href="#" class="macrocon"', 'rel="/" href="?mafia=' + group(mafia,1)+'&pwd='+my_hash()+'"');
+	}
+	return page;
+}
+
+void main()
+{
+	override(visit_url()).write();
 }
