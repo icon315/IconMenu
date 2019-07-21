@@ -74,7 +74,7 @@ void main(string action, string savename)
 	}
 	else if(action == "load")
 	{
-		print("Loading icons from " + filename + "...");
+		print("Loading icons from " + savename + "...");
 		string topmenu = visit_url("/awesomemenu.php");
 		file_to_map("/IconMenu/"+savename+".txt", awesomeicons);
 
