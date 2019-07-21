@@ -60,9 +60,9 @@ Switching between two menu bar layouts can be almost-instant, or take a few seco
 
 # Examples
 
-Two layouts have been provided as examples, namely "aftercore" and "hc_community_service". To load the latter, paste this into the CLI.
+Two layouts have been provided as examples, namely "demo_aftercore" and "demo_hccs". To load the latter, paste this into the CLI.
 
-<pre>IconMenu (load, hc_community_service)</pre>
+<pre>IconMenu (load, demo_hccs)</pre>
 
 # Supporting Development
 
