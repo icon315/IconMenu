@@ -52,9 +52,11 @@ To create an icon that launches Ezandora's Guide, set the macro to...
 
 <pre>/relay Relay_guide.ash</pre>
 
-To create an icon that will load a new layout for the menu bar, you can set the macro to...
+To create an icon that will switch to new menu bar layout, you can set the macro to...
 
 <pre>/mafia iconmenu (load, filename)</pre>
+
+Switching between two menu bar layouts can be almost-instant, or take a few seconds, depending on how similar the layouts are. 
 
 # Examples
 
