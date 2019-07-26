@@ -121,7 +121,7 @@ void main()
 			set_property("iconmenu_hide_help", true);
 			set_property("iconmenu_hide_bug_report", true);
 			set_property("iconmenu_hide_logout", true);
-			set_property("iconmenu_hide_relay_scripts", true);
+			set_property("iconmenu_hide_relay_scripts", false);
 		
 			# Live icons
 			set_property("iconmenu_live_familiar", "terrarium.gif");	
