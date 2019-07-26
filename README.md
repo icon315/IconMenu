@@ -72,6 +72,8 @@ You can specify a file to overwrite by changing the settings for iconmenu_live_f
 <pre>set iconmenu_live_familiar = "terrarium.gif"</pre>
 <pre>set iconmenu_live_campground = "elevent.gif"</pre>
 
+To remove a live icon, simply set its value to "". 
+
 # Examples
 
 Two layouts have been provided as examples, namely "demo_aftercore" and "demo_hccs". To load the latter, paste this into the CLI.
@@ -91,8 +93,8 @@ Two layouts have been provided as examples, namely "demo_aftercore" and "demo_hc
 
 | Live Icons  | Default Value |
 | ------------- | ------------- |
-| iconmenu_live_familiar | terrarium.gif
-| iconmenu_live_campground | elevent.gif
+| iconmenu_live_familiar | "terrarium.gif"
+| iconmenu_live_campground | "elevent.gif"
 
 # Supporting Development
 
