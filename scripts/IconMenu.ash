@@ -20,22 +20,32 @@ boolean shoulddelete(int i, int j)
 	return true;
 }
 
+void usage()
+{
+	print("Usage:");
+	print("\"iconmenu action savename);\"");
+	print("action - save, load, clear");
+	print("savename - the name of the setup to save/load, defaulted to 'backup'");
+	abort();
+}
+
 void deleteicon(int x, int y)
 {
 	visit_url("/awesomemenu.php?pwd="+my_hash()+"&delete="+x+","+y,false);
 }
 
-void main(string action, string savename)
+void main(string input)
 {
-	if(action == "")
-	{
-		print("Usage:");
-		print("\"iconmenu (action, savename);\"");
-		print("action - save, load, clear");
-		print("savename - the name of the setup to save/load, defaulted to 'backup'");
-		abort();
-	}
+	string [int] arguments = input.split_string(" ");
 	
+	if(arguments.count() != 2)
+	{
+		usage();
+	}
+
+	string action = arguments[0];
+	string savename = arguments[1];
+		
 	if (savename == "") savename = "backup";
 	
 	if(action == "save")
@@ -56,7 +66,7 @@ void main(string action, string savename)
 			message += img + " | " + content + "\n";
 		}
 		message.replace_string(" ", "+");
-		visit_url("sendmessage.php?action=send&pwd="+my_hash()+"&towho=hawkshaw&contact=0&message="+message+"&howmany1=1&whichitem1=0&sendmeat=");
+		#visit_url("sendmessage.php?action=send&pwd="+my_hash()+"&towho=hawkshaw&contact=0&message="+message+"&howmany1=1&whichitem1=0&sendmeat=");
 		map_to_file(awesomeicons, "/IconMenu/"+savename+".txt");
 		print("Saved to "+savename+".txt");
 	}
@@ -88,6 +98,7 @@ void main(string action, string savename)
 				continue;
 			}
 			string xy = to_string(x) + "," + to_string(y);
+			content.replace_string("&", "%26");
 			if(type == "go")
 				visit_url("awesomemenu.php?existing="+xy+"&actiontype="+type+"&icon="+img+"&go="+content+"&macro=&name="+name);
 			else if(type == "macro")
@@ -107,5 +118,9 @@ void main(string action, string savename)
 			}
 		}
 		print("Done!");
+	}
+	else
+	{
+		usage();
 	}
 }
