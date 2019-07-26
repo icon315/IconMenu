@@ -61,6 +61,8 @@ void main(string input)
 			string type= icons.group(4);
 			string content = icons.group(5);
 			content = content.replace_string("\\/","/");
+			content = content.replace_string("amp;", "");
+			print(content);
 			string Name = icons.group(7);
 			awesomeicons[x, y, img, type, content] = name;
 			message += img + " | " + content + "\n";
@@ -98,11 +100,13 @@ void main(string input)
 				continue;
 			}
 			string xy = to_string(x) + "," + to_string(y);
-			content.replace_string("&", "%26");
+			content = content.replace_string("|", "%7C");
+			content = content.replace_string("&", "%26");
+			content = content.replace_string(" ", "+");
 			if(type == "go")
-				visit_url("awesomemenu.php?existing="+xy+"&actiontype="+type+"&icon="+img+"&go="+content+"&macro=&name="+name);
+				visit_url("awesomemenu.php?existing="+xy+"&actiontype="+type+"&icon="+img+"&go="+content+"&macro=&name="+name, true, true);
 			else if(type == "macro")
-				visit_url("awesomemenu.php?existing="+xy+"&actiontype="+type+"&icon="+img+"&go=account.php&macro="+content+"&name="+name);
+				visit_url("awesomemenu.php?existing="+xy+"&actiontype="+type+"&icon="+img+"&go=account.php&macro="+content+"&name="+name, true, true);
 		}
 		
 		print("Removing old icons...");
