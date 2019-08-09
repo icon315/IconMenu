@@ -129,7 +129,7 @@ void main()
 		}
 		
 		print("Backing up your old layout...");
-		cli_execute("iconmenu save backup)");
+		cli_execute("iconmenu save backup");
 		
 		set_property("iconmenu_version", version);
 		print("You're good to go!");
