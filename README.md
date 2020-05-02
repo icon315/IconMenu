@@ -2,13 +2,13 @@ Just taking over this for personal use.
 
 # IconMenu
 
-![menubar](https://raw.githubusercontent.com/GodLobsterFan/IconMenu/master/images/menubar.png)
+![menubar](https://raw.githubusercontent.com/icon315/IconMenu/master/images/menubar.png)
 
 IconMenu is a suite of tools and improvements for Kingdom of Loathing's menu bar. 
 
 To install it, just type this into KoLMafia's CLI. 
 
-<pre>svn checkout https://github.com/GodLobsterFan/IconMenu/branches/release/</pre>
+<pre>svn checkout https://github.com/icon315/IconMenu/branches/release/</pre>
 
 To update the tool, just type...
 
@@ -22,15 +22,15 @@ For example,
 
 <pre>set iconmenu_hide_moons = true</pre>
 
-A full list of settings is available [here](https://github.com/GodLobsterFan/IconMenu/#reference).
+A full list of settings is available [here](https://github.com/icon315/IconMenu/#reference).
 
 IconMenu also adds a text box to the layout editor, which allows you to select custom images for icons on the menu bar. While I hope to add more functionality to this feature soon, for now, if you simply enter the name of an item, skill, or familiar's image file, that image file will be used once you submit your changes. 
 
-![rename](https://raw.githubusercontent.com/GodLobsterFan/IconMenu/master/images/rename.png)
+![rename](https://raw.githubusercontent.com/icon315/IconMenu/master/images/rename.png)
 
 For example, you could use "godlob" to set an icon's image to that of the God Lobster, or "godlob_egg" to set it as the God Lobster's hatchling. Image file names can be found by right clicking on them, and checking their URL, or else on the Wiki.
 
-![godlob](https://raw.githubusercontent.com/GodLobsterFan/IconMenu/master/images/godlob.png)
+![godlob](https://raw.githubusercontent.com/icon315/IconMenu/master/images/godlob.png)
 
 # Saving & Loading
 
@@ -48,7 +48,7 @@ You can also switch between layouts in the relay browser, by using custom macros
 
 # Mafia Commands
 
-![Guide](https://raw.githubusercontent.com/GodLobsterFan/IconMenu/master/images/guide.png)
+![Guide](https://raw.githubusercontent.com/icon315/IconMenu/master/images/guide.png)
 
 In order to execute CLI commands or launch relay scripts from the menu bar, IconMenu will automatically override any macro in the form "/mafia command" or "/relay filename.ash", and run it either in the CLI or relay browser. 
 
